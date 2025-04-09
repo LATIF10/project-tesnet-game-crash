@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.balance {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.multiplier {
+    font-size: 48px;
+    margin: 20px 0;
+}
+
+.graph {
+    width: 100%;
+    height: 200px;
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(to right, #00ff00, #00cc00);
+    width: 0;
+    transition: width 0.1s linear;
+}
+
+.bet-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.bet-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 100px;
+    margin-right: 10px;
+    background-color: #444;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.bet-btn, .cashout-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #00ff00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bet-btn:disabled, .cashout-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.status {
+    margin-top: 10px;
+    font-size: 18px;
+}
