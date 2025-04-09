@@ -8,20 +8,31 @@
 </head>
 <body>
     <div class="container">
-        <div class="balance">Saldo: <span id="balance">1000</span> (Simulasi)</div>
+        <div class="balance">Saldo: <span id="balance">0</span> Sepolia ETH</div>
+        <div class="wallet-section">
+            <button id="connectWalletBtn" class="wallet-btn">Hubungkan Wallet</button>
+            <div id="walletAddress" class="wallet-address"></div>
+        </div>
+        <div class="deposit-withdraw-section">
+            <input type="number" id="depositAmount" class="bet-input" placeholder="Jumlah Deposit" value="0.01" min="0.01" step="0.01" />
+            <button id="depositBtn" class="bet-btn" disabled>Deposit</button>
+            <input type="number" id="withdrawAmount" class="bet-input" placeholder="Jumlah Withdraw" value="0.01" min="0.01" step="0.01" />
+            <button id="withdrawBtn" class="bet-btn" disabled>Withdraw</button>
+        </div>
         <div class="multiplier" id="multiplier">1.00x</div>
         <div class="graph">
             <div class="line" id="line"></div>
         </div>
         <div class="bet-section">
-            <input type="number" id="betAmount" class="bet-input" value="100" min="1" max="1000" />
-            <button id="betBtn" class="bet-btn">Taruhan</button>
+            <input type="number" id="betAmount" class="bet-input" value="0.01" min="0.01" step="0.01" />
+            <button id="betBtn" class="bet-btn" disabled>Taruhan</button>
             <button id="cashoutBtn" class="cashout-btn" disabled>Cash Out</button>
         </div>
         <div class="status" id="status"></div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
