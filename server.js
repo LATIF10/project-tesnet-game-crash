@@ -1,7 +1,12 @@
+// server.js
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const { ethers } = require('ethers');
+
+// Konfigurasi provider untuk Sepolia Testnet
+const provider = new ethers.providers.JsonRpcProvider('https://sepolia.infura.io/v3/YOUR_INFURA_KEY'); // Ganti dengan Infura key kamu
 
 app.use(express.static('public'));
 
@@ -35,8 +40,39 @@ setInterval(() => {
 io.on('connection', (socket) => {
     console.log('Pemain terhubung:', socket.id);
 
-    players[socket.id] = { balance: 1000, bet: 0 };
+    players[socket.id] = { balance: 0, bet: 0, walletAddress: null }; // Tambah walletAddress
     socket.emit('balanceUpdate', players[socket.id].balance);
+
+    // Tangani deposit
+    socket.on('deposit', async (amount, walletAddress) => {
+        try {
+            players[socket.id].walletAddress = walletAddress;
+            // Simulasi: Tambah saldo setelah deposit (di dunia nyata, ini akan divalidasi di blockchain)
+            players[socket.id].balance += amount;
+            socket.emit('balanceUpdate', players[socket.id].balance);
+            socket.emit('status', `Deposit ${amount} Sepolia ETH berhasil!`);
+        } catch (error) {
+            socket.emit('status', `Gagal deposit: ${error.message}`);
+        }
+    });
+
+    // Tangani withdraw
+    socket.on('withdraw', async (amount) => {
+        if (amount <= 0 || amount > players[socket.id].balance) {
+            socket.emit('status', 'Jumlah withdraw tidak valid atau saldo tidak cukup!');
+            return;
+        }
+
+        try {
+            // Di dunia nyata, kita akan mengirimkan Sepolia ETH ke walletAddress
+            // Untuk simulasi, kita hanya kurangi saldo
+            players[socket.id].balance -= amount;
+            socket.emit('balanceUpdate', players[socket.id].balance);
+            socket.emit('status', `Withdraw ${amount} Sepolia ETH berhasil!`);
+        } catch (error) {
+            socket.emit('status', `Gagal withdraw: ${error.message}`);
+        }
+    });
 
     socket.on('placeBet', (betAmount) => {
         if (players[socket.id].bet > 0) {
