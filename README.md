@@ -25,3 +25,15 @@ Ini adalah simulasi sederhana dari game Crash, sebuah permainan berbasis pengali
    http://localhost:3000
 
 
+Langkah 2: Tambahkan Dependensi
+
+Kita perlu menambahkan Ethers.js ke proyek. Buka terminal di folder crash-game-server dan instal Ethers.js:
+
+bash
+
+
+npm install ethers
+
+
+
+
