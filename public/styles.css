@@ -21,6 +21,32 @@ body {
     margin-bottom: 10px;
 }
 
+.wallet-section {
+    margin-bottom: 20px;
+}
+
+.wallet-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.wallet-address {
+    margin-top: 10px;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.deposit-withdraw-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
 .multiplier {
     font-size: 48px;
     margin: 20px 0;
