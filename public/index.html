@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Crash</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="balance">Saldo: <span id="balance">1000</span> (Simulasi)</div>
+        <div class="multiplier" id="multiplier">1.00x</div>
+        <div class="graph">
+            <div class="line" id="line"></div>
+        </div>
+        <div class="bet-section">
+            <input type="number" id="betAmount" class="bet-input" value="100" min="1" max="1000" />
+            <button id="betBtn" class="bet-btn">Taruhan</button>
+            <button id="cashoutBtn" class="cashout-btn" disabled>Cash Out</button>
+        </div>
+        <div class="status" id="status"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
